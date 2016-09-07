@@ -9,6 +9,8 @@ class TodosListCtrl {
   constructor($scope) {
     $scope.viewModel(this);
 
+    this.subscribe('tasks');
+
     this.hideCompleted = false;
 
     this.helpers({
@@ -51,11 +53,15 @@ class TodosListCtrl {
 
   setChecked(task) {
     // Set the checked property to the opposite of its current value
-    Meteor.call('tasks.setChecket', task._id, !task.checked);
+    Meteor.call('tasks.setChecked', task._id, !task.checked);
   }
 
   removeTask(task) {
     Meteor.call('tasks.remove', task._id);
+  }
+
+  setPrivate(task) {
+    Meteor.call('tasks.setPrivate', task._id, !task.private);
   }
 }
 export default angular.module('todosList', [
