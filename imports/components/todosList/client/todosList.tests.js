@@ -27,7 +27,7 @@ describe('todosList', function() {
   
   describe('component', function() {
     it('should be showing incomplete tasks count', function() {
-      assert.include(element[0].querySelector('h1').innerHtml, '0');
+      assert.include(element[0].querySelector('h1').innerHTML, '0');
     });
   });
   
@@ -54,7 +54,7 @@ describe('todosList', function() {
       
       it('should reset newTask', function() {
         assert.equal(controller.newTask, '');
-      }
+      });
     });
   });
 })
